@@ -219,7 +219,21 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(var/t as text)
-	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+    var/first = ascii2text(text2ascii(t))
+    return r_uppertext(first) + copytext(t, length(first) + 1)
+
+/proc/r_uppertext(text)
+	var/t = ""
+	for(var/i = 1, i <= length(text), i++)
+		var/a = text2ascii(text, i)
+		if (a == 1105 || a == 1025)
+			t += ascii2text(1025)
+			continue
+		if (a < 1072 || a > 1105)
+			t += ascii2text(a)
+			continue
+		t += ascii2text(a - 32)
+	return uppertext(t)
 
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()

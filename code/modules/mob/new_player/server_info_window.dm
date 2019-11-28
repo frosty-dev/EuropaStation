@@ -8,6 +8,7 @@
 
 	var/list/close = list("Gotcha!","AFFIRMATIVE.","EXCELSIOR!","I accept.","THE PACT IS SEALED.","ok","Continue.","Take it away!","Let us begin.")
 	var/output = {"
+	<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 	[join_motd]
 	<br>
 	[file2text("config/rules.html")]
